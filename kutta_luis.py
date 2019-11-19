@@ -12,8 +12,8 @@ def f(x,y):
 
     #Definindo as constantes
     c1=0.1
-    d1=0.05
-    c2=0.1
+    d1=0.1
+    c2=0.05
     d2=0.05
 
     #Definindo a função f(x,y)
@@ -73,7 +73,7 @@ def plot(x,y,t,N):
     ax[1].set_ylabel("Predadores [hab]")                 #
     ax[1].set_title("Número de pontos N={}".format(N))   #Um breve título explicando o plot
     fig.tight_layout()                                   #Otimizando o espaço
-    plt.savefig('N{}.png'.format(N))                     # Savando a figura pra ficar um relatorio bonito
+    plt.savefig('R KUTTA: N{}.png'.format(N))                     # Savando a figura pra ficar um relatorio bonito
 
     
 
