@@ -111,8 +111,14 @@ t_ini=0
 t_fini=365
 
 #Condições iniciais
-x0=3
-y0=1
+a_x0=3
+a_y0=1
+
+b1_x0=3
+b1_y0=10
+
+b2_x0=3
+b2_y0=100
 
 #Caso1
 N1=365
@@ -131,14 +137,20 @@ t3=np.linspace(t_ini,t_fini,N3)
 
 """...Tentar mais casos e ver o que acontece..."""
 
-#Solver
-rk_x1,rk_y1 = RK(t_ini,t_fini,x0,y0,h1,N1)
-rk_x2,rk_y2 = RK(t_ini,t_fini,x0,y0,h2,N2)
-rk_x3,rk_y3 = RK(t_ini,t_fini,x0,y0,h3,N3)
+#Solver item a
+rk_x1,rk_y1 = RK(t_ini,t_fini,a_x0,a_y0,h1,N1)
+rk_x2,rk_y2 = RK(t_ini,t_fini,a_x0,a_y0,h2,N2)
+rk_x3,rk_y3 = RK(t_ini,t_fini,a_x0,a_y0,h3,N3)
 
-euler_x1,euler_y1 = EULER(t_ini,t_fini,x0,y0,h1,N1)
-euler_x2,euler_y2 = EULER(t_ini,t_fini,x0,y0,h2,N2)
-euler_x3,euler_y3 = EULER(t_ini,t_fini,x0,y0,h3,N3)
+euler_x1,euler_y1 = EULER(t_ini,t_fini,a_x0,a_y0,h1,N1)
+euler_x2,euler_y2 = EULER(t_ini,t_fini,a_x0,a_y0,h2,N2)
+euler_x3,euler_y3 = EULER(t_ini,t_fini,a_x0,a_y0,h3,N3)
+
+#Solver item b
+rk_b1_x3,rk_b1_y3 = RK(t_ini,t_fini,b1_x0,b1_y0,h3,N3)
+euler_b1_x3,euler_b1_y3 = EULER(t_ini,t_fini,b1_x0,b1_y0,h3,N3)
+rk_b2_x3,rk_b2_y3 = RK(t_ini,t_fini,b2_x0,b2_y0,h3,N3)
+euler_b2_x3,euler_b2_y3 = EULER(t_ini,t_fini,b2_x0,b2_y0,h3,N3)
 
 # ========================================================================================== #
 # ===================================== P  L  O  T  ======================================== #
@@ -152,5 +164,11 @@ plot(rk_x3,rk_y3,t3,N3,'RK')
 plot(euler_x1,euler_y1,t1,N1,'EULER')
 plot(euler_x2,euler_y2,t2,N2,'EULER')
 plot(euler_x3,euler_y3,t3,N3,'EULER')
+
+#plotando item b
+plot(rk_b1_x3,rk_b1_y3,t3,N3,'RK_3B10')
+plot(euler_b1_x3,euler_b1_y3,t3,N3,'EULER_3B10')
+plot(rk_b2_x3,rk_b2_y3,t3,N3,'RK_3B100')
+plot(euler_b2_x3,euler_b2_y3,t3,N3,'EULER_3B100')
 
 plt.show() #Mostra a figura (tem que ter se não estiver usando o spyder)
